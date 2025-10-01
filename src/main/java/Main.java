@@ -5,31 +5,35 @@ public class Main {
         System.out.println("Inside method, parameter 'val' is now: " + val);
     }
 
+    //  Exercise 2
     public static void resetPoint(Point p) {
-        System.out.println("Inside resetPoint, start: ");
+        System.out.println("Inside resetPoint, p start: ");
         p.printState();
-        p.move(0, 0);
-        p = new Point(0, 0);
-        System.out.println("Inside resetPoint, end: ");
+        p.move(0, 0);  //  Affect original object
+        p = new Point(0, 0);  // Does not affect original reference
+        System.out.println("Inside resetPoint, p end: ");
         p.printState();
     }
 
     // Used for Exercise 5
     public static int sumCoordinates(Point... points) {
         // Implementation needed for Exercise 5
-        return 0;
+        int sum = 0;
+        for (Point p : points) {
+            sum += p.x;
+        }
+        return sum;
     }
 
     public static void main(String[] args) {
+
         // Exercise 1
         var startPoint = new Point(10,20); // Exercise 1, Declaring a reference variable.
         
         System.out.println("Hello World!");
-        System.out.println("x value is : " + startPoint.x);
-
+        System.out.println("x value of startPoint.x: " + startPoint.x);
         startPoint.move(5,-3);  //the move method in Point.java adds the new values
         // and changes the values of x and y
-
         startPoint.printState();  // Calling the printState method
 
         // Exercise 2
@@ -39,18 +43,42 @@ public class Main {
 
         Point refPoint = new Point(5,10);
         System.out.println("Before resetPoint: ");
-        refPoint.printState();
+        resetPoint(refPoint);
         System.out.println("After resetPoint: ");
         refPoint.printState();
 
         // Exercise 3 test using the no-argument constructor, should output (0,0)
-        Point origin = new Point();  // Calls Point(0)
+        Point defaultPoint = new Point();  // Calls Point(0)
         System.out.println("No-argument constructor result should be (0, 0): ");
-        origin.printState();  // We expect Point coordinates (0,0)
+        defaultPoint.printState();  // We expect Point coordinates (0,0)
 
         //Exercise 4 Inheritance test
         Microwave mw = new Microwave(800,30);
-        mw.model = "Panasonic Inverter";
+
+        // Exercise 5
+        Point p1 = new Point(1,2);
+        Point p2 = new Point(3,4);
+        Point p3 = new Point(5,6);
+        int sum1 = sumCoordinates(p1,p2,p3);
+        System.out.println("Sum of x-coordinates is: " + sum1);
+
+        Point[] pointArray = {new Point(7,8), new Point(9,10)};
+        int sum2 = sumCoordinates(pointArray);
+        System.out.println("Sum from array: " + sum2);
+
+        // Exercise 6
         mw.printDescription();
+
+        // Exercise 7
+        Device d1 = new Device(500);
+        Microwave m1 = new Microwave(1000,120);
+        Device polyDevice = m1;
+        polyDevice.printDescription();  // Due to runtime polymorphism, Microwave's overridden method is called.
+
+        // Exercise 8
+        if (polyDevice instanceof Microwave) {
+            Microwave mwRef = (Microwave) polyDevice;
+            mwRef.heatFood();
+        }
     }
 }

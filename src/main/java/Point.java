@@ -4,7 +4,12 @@ public class Point {
 
     // Default Constructor (Exercise 3 modification needed here)
     public Point() {
-        this(0);
+        this(0); // calls the one-argument constructor with 0.
+    }
+
+    public Point(int size) {
+        this.x = size;
+        this.y = size;
     }
 
     // Two-argument constructor
@@ -12,10 +17,6 @@ public class Point {
         // Shadowing resolution used here
         this.x = x;
         this.y = y;
-    }
-
-    public Point(int size) {
-        this(size, size);
     }
 
     public void move(int deltaX, int deltaY) {

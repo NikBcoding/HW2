@@ -19,5 +19,4 @@ public class Device {
     public void printDescription() {
         System.out.println("Device Model: " + model + ", Current Power: " + powerLevel + " Watts.");
     }
-
 }
