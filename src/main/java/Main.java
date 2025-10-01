@@ -47,5 +47,10 @@ public class Main {
         Point origin = new Point();  // Calls Point(0)
         System.out.println("No-argument constructor result should be (0, 0): ");
         origin.printState();  // We expect Point coordinates (0,0)
+
+        //Exercise 4 Inheritance test
+        Microwave mw = new Microwave(800,30);
+        mw.model = "Panasonic Inverter";
+        mw.printDescription();
     }
 }
