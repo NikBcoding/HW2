@@ -31,7 +31,7 @@ public class Main {
         Point startPoint = new Point(10,20);  // Exercise 1, Declaring, Instantiating, Initializing
         
         System.out.println("Hello World!");
-        System.out.println("x value of startPoint.x: " + startPoint.x);  // Accessing object's x field directly and printing.
+        System.out.println("x value of startPoint is: " + startPoint.x);  // Accessing object's x field directly and printing.
         startPoint.move(5,-3);  //the move method in Point.java adds the new values
         // and changes the values of x and y
         startPoint.printState();  // Calling the printState method from Point.java
