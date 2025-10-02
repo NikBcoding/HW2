@@ -39,7 +39,7 @@ public class Main {
         // Exercise 2
         int originalValue = 50;
         attemptToChangePrimitive(originalValue);  //calling method with the originalValue as the argument.
-        System.out.println("Original value is: " + originalValue); // originalValue is unchanged because Java passes arguments by value.
+        System.out.println("After method call, originalValue is: " + originalValue); // originalValue is unchanged because Java passes arguments by value.
 
         Point refPoint = new Point(5,10);
         System.out.println("Before resetPoint: ");
@@ -70,15 +70,18 @@ public class Main {
         mw.printDescription();
 
         // Exercise 7
-        Device d1 = new Device(500);
-        Microwave m1 = new Microwave(1000,120);
-        Device polyDevice = m1;
-        polyDevice.printDescription();  // Due to runtime polymorphism, Microwave's overridden method is called.
+        Device d1 = new Device(100);
+        Microwave m1 = new Microwave(100, 60);
+        Device polyDevice = m1; // Upcasting
+        polyDevice.printDescription();
+        // Due to runtime polymorphism, Microwave's overridden method is called.
 
         // Exercise 8
         if (polyDevice instanceof Microwave) {
-            Microwave mwRef = (Microwave) polyDevice;
-            mwRef.heatFood();
+            Microwave downcastedMicrowave = (Microwave) polyDevice;
+            downcastedMicrowave.heatFood(); }
+        else {
+            System.out.println("Microwave is not a Microwave");
         }
     }
 }
