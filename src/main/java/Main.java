@@ -28,7 +28,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Exercise 1
-        Point startPoint = new Point(10,20);  // Exercise 1, Declaring, Instantiating, Initializing
+        Point startPoint = new Point(10,20);  // Declaring, Instantiating, Initializing
         
         System.out.println("Hello World!");
         System.out.println("x value of startPoint is: " + startPoint.x);  // Accessing object's x field directly and printing.
